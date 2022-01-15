@@ -20,23 +20,7 @@ export class UserController {
     @Body('password') password: string 
   ): any {
     const hasil = this.usersService.insert(email, password)
+    console.log(hasil)
     return hasil
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('user')
-  userData(@Request() req): any {
-    return req.user
-  }
-
-  @Get('user/:email')
-  userInfo(@Param() params) : any {
-    return this.usersService.findOne(params.email)
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('protected')
-  getHello(@Request() req): string {
-    return req.user
   }
 }

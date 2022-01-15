@@ -10,7 +10,7 @@ import { LocalStrategy } from './local.strategy';
 @Module({
   imports: [UsersModule, PassportModule, ConfigModule.forRoot(), JwtModule.register({
     secret: process.env.SECRETKEY,
-    signOptions: { expiresIn: "60s" }
+    signOptions: { expiresIn: 1000 }
   })],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService]
